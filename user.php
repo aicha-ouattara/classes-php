@@ -53,11 +53,9 @@ class User
             $this->firstname = null;
             $this->lastname = null;
             return true;
-
           /*  session_destroy();
             unset($_SESSION['id']);
             return true;*/
-
     }
 
    public function delete()
