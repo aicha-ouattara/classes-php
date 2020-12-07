@@ -53,9 +53,6 @@ class User
             $this->firstname = null;
             $this->lastname = null;
             return true;
-          /*  session_destroy();
-            unset($_SESSION['id']);
-            return true;*/
     }
 
    public function delete()
@@ -151,13 +148,19 @@ class User
 
 $aicha= new User();
 $aicha->register('chay', 1234,'aichadesign@gmail.com', 'Flore', 'Ouattara');
-$aicha->connect('chay',1234);
+/*$aicha->connect('chay',1234);
 $aicha->getAllInfos();
+$aicha->update('chayghj', 1234,'aichadesign@gmail.com', 'Flore', 'Ouattara');*/
+
+
+echo'<pre>';
+var_dump($aicha->getAllInfos());
+echo '</pre>';
+
 echo'<pre>';
 var_dump($aicha);
 echo '</pre>';
 
-$aicha->update('chayghj', 1234,'aichadesign@gmail.com', 'Flore', 'Ouattara');
 echo'<pre>';
 var_dump($aicha);
 echo '</pre>';
