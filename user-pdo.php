@@ -12,17 +12,26 @@ class User
     public function register($login, $password, $email, $firstname, $lastname)
     {
         $bdd=new PDO("mysql:host=localhost;dbname=classes","root","");
-        $req = $bdd->prepare("INSERT INTO utilisateurs(login, password, email, firstname, lastname) VALUES(?, ?, ?, ?, ?)"); //Insert to the database
-        $req->execute(array($login, $password, $email, $firstname, $lastname));
-        return $req;
+        $req = $bdd ->prepare('SELECT id FROM utilisateurs WHERE login = ?');  //Request for the verification of login
+        $req->execute(array($login));
+        $user = $req->rowCount();
+        if($user)
+        {
+            return false;
+        }
+        else
+        {
+            $bdd=new PDO("mysql:host=localhost;dbname=classes","root","");
+            $req = $bdd->prepare("INSERT INTO utilisateurs(login, password, email, firstname, lastname) VALUES(?, ?, ?, ?, ?)"); //Insert to the database
+            $req->execute(array($login, $password, $email, $firstname, $lastname));
+            return $req;
+        }
+
+
     }
 
     public function connect($login, $password)
     {
-        if(session_status()== PHP_SESSION_NONE)
-        {
-            session_start();
-        }
         $bdd=new PDO("mysql:host=localhost;dbname=classes","root","");
         $req = $bdd->prepare("SELECT * FROM utilisateurs WHERE login = ? AND password = ?");
         $req->execute(array($login, $password));
@@ -30,7 +39,6 @@ class User
 
         if($req->rowCount() > 0)
         {
-            $_SESSION["id"] = $users["id"];
             $this->id = $users["id"];
             $this->login = $users["login"];
             $this->password = $users["password"];
@@ -47,13 +55,15 @@ class User
 
     public function disconnect()
     {
-        $this->id = null;
-        $this->login = null;
-        $this->password = null;
-        $this->email = null;
-        $this->firstname = null;
-        $this->lastname = null;
-        return true;
+        if(isset($this->id))
+        {
+            $this->id = null;
+            $this->login = null;
+            $this->password = null;
+            $this->email = null;
+            $this->firstname = null;
+            $this->lastname = null;
+        }
     }
 
     public function delete()
@@ -83,7 +93,7 @@ class User
 
     public function isConnected()
     {
-        if($_SESSION["id"])
+        if(isset($this->id))
         {
             return true;
         }
@@ -149,9 +159,12 @@ class User
 }
 
 $aicha= new User();
-$aicha->register('chaya', 1234,'aichadesign@gmail.com', 'Flore', 'Ouattara');
-$aicha->connect('chaya',1234);
-$aicha->getAllInfos();
+/*$aicha->register('chayo', "rara",'aichadesign@gmail.com', 'Flore', 'Ouattara');
+$aicha->connect('chaya',1234);*/
+
+var_dump($aicha->register('chayali', 1234,'aichadesign@gmail.com', 'Flore', 'Ouattara'));
+
+/*$aicha->getAllInfos();
 echo'<pre>';
 var_dump($aicha->getAllInfos());
 echo '</pre>';
@@ -168,7 +181,7 @@ $aicha->refresh();
 echo'<pre>';
 var_dump($aicha);
 echo '</pre>';
-
+*/
 
 
 /*
