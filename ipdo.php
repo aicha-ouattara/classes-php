@@ -2,18 +2,51 @@
 
 class Ipdo
 {
-    public function __construct( $dbhost = "localhost", $dbname = "myDataBaseName", $username = "root", $password    = ""){
+    private $host;
+    private $username;
+    private $password;
+    private  $db;
+    private  $connect;
 
-        try{
-
-            $this->connection = new PDO("mysql:host={$dbhost};dbname={$dbname};", $username, $password);
-            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-
-        }catch(Exception $e){
-            throw new Exception($e->getMessage());
-        }
+    public function __construct ($host, $username, $password, $db)
+    {
+        $this->host = $host;
+        $this->username = $username;
+        $this->password =$password;
+        $this->db = $db;
+        $this->connect =  mysqli_connect($host, $username, $password);
 
     }
+
+    public function connect($host, $username, $password)
+    {
+     if( $this->connect)
+     {
+         $this->close();
+     }
+        $this->connect =  mysqli_connect($host, $username, $password);
+    }
+
+    public function destructeur()
+    {
+        $this->connect->close();
+    }
+
+    public function close()
+    {
+        $this->connect->close();
+    }
 }
+
+
+//$mysqli = new Ipdo("localhost", "root", "", "classes");
+echo '<pre>';
+var_dump($mysqli = new Ipdo("localhost", "root", "", "classes"));
+echo '</pre>';
+
+echo '<pre>';
+var_dump($mysqli->connect("localhost", "root", ""));
+echo '</pre>';
+
+
 ?>

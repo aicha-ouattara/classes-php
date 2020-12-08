@@ -27,7 +27,6 @@ class User
             return $req;
         }
 
-
     }
 
     public function connect($login, $password)
