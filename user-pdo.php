@@ -63,6 +63,11 @@ class User
             $this->email = null;
             $this->firstname = null;
             $this->lastname = null;
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -73,8 +78,12 @@ class User
         $req->execute(array($this->id));
         if ($req->execute(array($this->id)))
         {
-            session_destroy();
-            unset($_SESSION['id']);
+            $this->id = null;
+            $this->login = null;
+            $this->password = null;
+            $this->email = null;
+            $this->firstname = null;
+            $this->lastname = null;
             return true;
         }
         else
@@ -85,10 +94,18 @@ class User
 
     public function update($login, $password, $email, $firstname, $lastname)
     {
-        $bdd=new PDO("mysql:host=localhost;dbname=classes","root","");
-        $req = $bdd->prepare("UPDATE utilisateurs SET login = ?, password = ?, email = ?, firstname = ? , lastname = ? WHERE id = ?");
-        $req->execute(array($login, $password, $email, $firstname, $lastname, $this->id));
-        return $req;
+        if(isset($this->id))
+        {
+            $bdd=new PDO("mysql:host=localhost;dbname=classes","root","");
+            $req = $bdd->prepare("UPDATE utilisateurs SET login = ?, password = ?, email = ?, firstname = ? , lastname = ? WHERE id = ?");
+            $req->execute(array($login, $password, $email, $firstname, $lastname, $this->id));
+            return $req;
+        }
+        else
+        {
+            return false;
+        }
+
     }
 
     public function isConnected()
@@ -130,24 +147,28 @@ class User
 
     public function refresh()
     {
-        $bdd=new PDO("mysql:host=localhost;dbname=classes","root","");
-        $req = $bdd->prepare("SELECT * FROM utilisateurs WHERE id = ?");
-        $req->execute(array($this->id));
-        $users=$req->fetch(PDO::FETCH_ASSOC);
+        if(isset($this->id))
+        {
+            $bdd=new PDO("mysql:host=localhost;dbname=classes","root","");
+            $req = $bdd->prepare("SELECT * FROM utilisateurs WHERE id = ?");
+            $req->execute(array($this->id));
+            $users=$req->fetch(PDO::FETCH_ASSOC);
 
-        if(!empty($users))
-        {
-            $this->login = $users["login"];
-            $this->password = $users["password"];
-            $this->email = $users["email"];
-            $this->firstname = $users["firstname"];
-            $this->lastname = $users["lastname"];
-            return true;
+            if($users)
+            {
+                $this->login = $users["login"];
+                $this->password = $users["password"];
+                $this->email = $users["email"];
+                $this->firstname = $users["firstname"];
+                $this->lastname = $users["lastname"];
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
-        else
-        {
-            return false;
-        }
+
     }
 
     /* public function __destruct()

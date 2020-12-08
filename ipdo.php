@@ -1,6 +1,6 @@
 <?php
 
-class Lpdo
+class Ipdo
 {
     public function __construct( $dbhost = "localhost", $dbname = "myDataBaseName", $username = "root", $password    = ""){
 

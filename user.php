@@ -64,6 +64,11 @@ class User
                $this->email = null;
                $this->firstname = null;
                $this->lastname = null;
+               return true;
+           }
+           else
+           {
+               return false;
            }
     }
 
@@ -164,30 +169,30 @@ class User
        }
     }
 
-   /* public function __destruct()
-    {
-        // Disconnect from DB
-        $this->DBH = null;
-        echo 'Successfully disconnected from the database!';
-    }*/
 }
 
 $aicha= new User();
-//$aicha->register('chay', 1234,'aichadesign@gmail.com', 'Flore', 'Ouattara');
+$aicha->register('chay', 1234,'aichadesign@gmail.com', 'Flore', 'Ouattara');
 $aicha->connect('chay',1234);
+
 /*$aicha->getAllInfos();
 $aicha->update('chayghj', 1234,'aichadesign@gmail.com', 'Flore', 'Ouattara');*/
 
-var_dump($aicha->register('	
-chayghj', 1234,'aichadesign@gmail.com', 'Flore', 'Ouattara'));
-var_dump($aicha->connect('chay',1234));
-var_dump($aicha->delete());
+/*var_dump($aicha->register('chayghj', 1234,'aichadesign@gmail.com', 'Flore', 'Ouattara'));
+var_dump($aicha->connect('chay',1234));*/
+echo'<pre>';
+var_dump($aicha->getLogin());
+echo'</pre>';
 
-/*echo'<pre>';
+//var_dump($aicha->delete());
+
+echo'<pre>';
 var_dump($aicha->getAllInfos());
 echo '</pre>';
 
-echo'<pre>';
+var_dump($aicha->refresh());
+var_dump($aicha->disconnect());
+/*echo'<pre>';
 var_dump($aicha);
 echo '</pre>';
 
