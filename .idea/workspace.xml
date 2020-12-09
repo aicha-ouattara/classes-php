@@ -22,6 +22,8 @@
     <list default="true" id="cbcd4090-8cd5-400f-88d5-6f5d05332c98" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ipdo.php" beforeDir="false" afterPath="$PROJECT_DIR$/ipdo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/text.php" beforeDir="false" afterPath="$PROJECT_DIR$/text.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-pdo.php" beforeDir="false" afterPath="$PROJECT_DIR$/user-pdo.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +36,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP7.4.2" />
   <component name="ProjectId" id="1lK0xY3tdT4qAOVT2vIi7lQAXCK" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -64,7 +67,7 @@
       <option name="presentableId" value="Default" />
       <updated>1607330722435</updated>
       <workItem from="1607330723555" duration="8651000" />
-      <workItem from="1607340203412" duration="45696000" />
+      <workItem from="1607340203412" duration="53842000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1607348770236</created>
@@ -96,6 +99,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="400" y="8" key="#PHP" timestamp="1607520619728">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="400" y="8" key="#PHP/0.0.1440.900@0.0.1440.900" timestamp="1607520619728" />
     <state x="69" y="281" key="#SQL_Dialects" timestamp="1607333422684">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

@@ -1,36 +1,33 @@
 <?php
 
-
 class Ipdo
 {
-    private $host;
-    private $username;
-    private $password;
-    private $db;
-    private $connect;
+    private $connection;
 
-    public function constructeur($host, $username, $password, $db)
+    public function __construct( $host = "localhost", $dbname = "classes", $username = "root", $password    = ""){
+
+            $this->connection = mysqli_connect($host, $username, $password, $dbname);
+
+        }
+
+    public function connect($host, $username, $password, $dbname)
     {
-        $this->host;
-        $this->username;
-        $this->password;
-        $this->db;
-        $this->connect = new mysqli($host, $username, $password, $db);
-
-    }
-
-    public function connect($host, $username, $password, $db)
-    {
-        if (isset($this->connect)) {
+        if(isset($this->connection))
+        {
             $this->close();
         }
-        $this->connect = new mysqli($host, $username, $password, $db);
+        $this->connection = mysqli_connect($host, $username, $password, $dbname);
     }
-
 
     public function close()
     {
-        mysqli_close($this->connect);
+        mysqli_close($this->connection);
+    }
+
+    public function __destruct()
+    {
+        $this->connection = NULL;
+        return true;
     }
 
     public function execute($query)
@@ -40,11 +37,11 @@ class Ipdo
 }
 
 
-//$mysqli = new Ipdo("localhost", "root", "", "classes");
-echo '<pre>';
-var_dump($mysqli = new Ipdo("localhost", "root", "", "classes"));
-echo '</pre>';
 
 
+$mysqli = new Ipdo();
 
+echo'<pre>';
+var_dump($mysqli);
+echo'</pre>';
 

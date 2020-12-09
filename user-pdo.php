@@ -170,12 +170,6 @@ class User
 
     }
 
-    /* public function __destruct()
-     {
-         // Disconnect from DB
-         $this->DBH = null;
-         echo 'Successfully disconnected from the database!';
-     }*/
 }
 
 $aicha= new User();
