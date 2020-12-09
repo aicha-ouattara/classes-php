@@ -2,51 +2,49 @@
 
 class Ipdo
 {
-    private $host;
-    private $username;
-    private $password;
-    private  $db;
-    private  $connect;
+    private $connection;
 
-    public function __construct ($host, $username, $password, $db)
-    {
-        $this->host = $host;
-        $this->username = $username;
-        $this->password =$password;
-        $this->db = $db;
-        $this->connect =  mysqli_connect($host, $username, $password);
+    public function __construct( $host = "localhost", $dbname = "classes", $username = "root", $password    = ""){
+
+        $this->connection = mysqli_connect($host, $username, $password, $dbname);
 
     }
 
-    public function connect($host, $username, $password)
+    public function connect($host, $username, $password, $dbname)
     {
-     if( $this->connect)
-     {
-         $this->close();
-     }
-        $this->connect =  mysqli_connect($host, $username, $password);
-    }
-
-    public function destructeur()
-    {
-        $this->connect->close();
+        if(isset($this->connection))
+        {
+            $this->close();
+        }
+        $this->connection = mysqli_connect($host, $username, $password, $dbname);
     }
 
     public function close()
     {
-        $this->connect->close();
+        mysqli_close($this->connection);
+    }
+
+    public function __destruct()
+    {
+        $this->connection = NULL;
+        return true;
+    }
+
+    public function execute($query)
+    {
+
     }
 }
 
 
-//$mysqli = new Ipdo("localhost", "root", "", "classes");
-echo '<pre>';
-var_dump($mysqli = new Ipdo("localhost", "root", "", "classes"));
-echo '</pre>';
 
-echo '<pre>';
-var_dump($mysqli->connect("localhost", "root", ""));
-echo '</pre>';
+
+$mysqli = new Ipdo();
+
+echo'<pre>';
+var_dump($mysqli);
+echo'</pre>';
+
 
 
 ?>
