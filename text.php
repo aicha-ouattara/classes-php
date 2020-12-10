@@ -11,7 +11,7 @@ class Ipdo
     private $userinfo;
     private $table;
 
-    public function __construct ($host = "localhost", $username = "root", $password = "", $db = "moduleconnexion"){ //J'avais tester d'abord avec me __construct et en fait ca ne change rien a ma fonction
+    public function __construct ($host = "localhost", $username = "root", $password = "", $db = "moduleconnexion"){ //J'avais tester d'abord avec la methode __construct et en fait ca ne change rien a ma fonction
 
         $this->host = $host;
         $this->username = $username;

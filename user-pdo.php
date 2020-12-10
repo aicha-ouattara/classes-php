@@ -173,10 +173,10 @@ class User
 }
 
 $aicha= new User();
-/*$aicha->register('chayo', "rara",'aichadesign@gmail.com', 'Flore', 'Ouattara');
-$aicha->connect('chaya',1234);*/
+$aicha->register('chay', 1234,'aichadesign@gmail.com', 'Flore', 'Ouattara');
+$aicha->connect('chay', 1234);
 
-var_dump($aicha->register('chayali', 1234,'aichadesign@gmail.com', 'Flore', 'Ouattara'));
+//var_dump($aicha->register('chayali', 1234,'aichadesign@gmail.com', 'Flore', 'Ouattara'));
 
 /*$aicha->getAllInfos();
 echo'<pre>';
@@ -184,18 +184,31 @@ var_dump($aicha->getAllInfos());
 echo '</pre>';
 echo'<pre>';
 var_dump($aicha);
-echo '</pre>';
+echo '</pre>'; */
 
-//$aicha->update('chayghj', 1234,'aichadesign@gmail.com', 'Flore', 'Ouattara');
-echo'<pre>';
+//$aicha->update('chayolo', 1234,'aichadesign@gmail.com', 'Flore', 'Ouattara');
+
+/*echo'<pre>';
+var_dump($aicha->getLogin());
+echo'</pre>';*/
+
+/*echo'<pre>';
+var_dump($aicha->getAllInfos());
+echo '</pre>';*/
+
+//var_dump($aicha->refresh());
+/*echo'<pre>';
+var_dump($aicha->disconnect());
+echo '</pre>';*/
+/*echo'<pre>';
 var_dump($aicha);
 echo '</pre>';
 
 $aicha->refresh();
 echo'<pre>';
 var_dump($aicha);
-echo '</pre>';
-*/
+echo '</pre>';*/
+
 
 
 /*
