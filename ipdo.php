@@ -11,7 +11,7 @@ class Ipdo
     private $userinfo;
     private $table;
 
-    public function __construct($host = "localhost", $username = "root", $password = "", $db = "moduleconnexion"){
+    public function constructeur ($host = "localhost", $username = "root", $password = "", $db = "moduleconnexion"){
 
         $this->host = $host;
         $this->username = $username;
@@ -86,7 +86,6 @@ class Ipdo
     {
         $result = mysqli_query($this->connection,"SHOW COLUMNS FROM $table");
         $fields = mysqli_fetch_all($result);
-
         return  $fields;
     }
 
