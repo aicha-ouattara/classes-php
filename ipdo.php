@@ -84,9 +84,16 @@ class Ipdo
 
     public function getFields($table)
     {
-        $result = mysqli_query($this->connection,"SHOW COLUMNS FROM $table");
-        $fields = mysqli_fetch_all($result);
-        return  $fields;
+        if($this->connection)
+        {
+            $result = mysqli_query($this->connection,"SHOW COLUMNS FROM $table");
+            $fields = mysqli_fetch_all($result);
+            return  $fields;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }
