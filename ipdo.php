@@ -37,7 +37,7 @@ class Ipdo
        return $this->connection->close();
     }
 
-    public function __destruct()
+    public function destructeur()
     {
         return $this->db = null;
     }
