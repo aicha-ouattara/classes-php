@@ -47,7 +47,14 @@ class Ipdo
     }
     public function getLastQuery()
     {
-       
+       if($this->query)
+       {
+           return $this->query;
+       }
+       else
+       {
+           return false;
+       }
 
     }
 
@@ -67,6 +74,14 @@ echo'<pre>';
 var_dump($mysqli->execute("SELECT * FROM utilisateurs"));
 echo'</pre>';
 
+echo'<pre>';
+var_dump($mysqli->getLastQuery());
+echo'</pre>';
 
+echo'<pre>';
+var_dump($mysqli->getLastQuery());
+echo'</pre>';
+
+//("SELECT * FROM utilisateurs")
 
 ?>
