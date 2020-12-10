@@ -74,7 +74,10 @@ class Ipdo
 
     public function getTables()
     {
-        return $this->userinfo->showtables();
+        $result = mysqli_query($this->connection, 'SHOW TABLES');
+        $table = mysqli_fetch_all($result);
+        return  $table;
+
     }
 
 }
