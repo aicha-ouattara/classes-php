@@ -9,6 +9,7 @@ class Ipdo
     private $db;
     private $query;
     private $userinfo;
+    private $table;
 
     public function __construct($host = "localhost", $username = "root", $password = "", $db = "moduleconnexion"){
 
@@ -18,6 +19,7 @@ class Ipdo
         $this->db= $db;
         $this->query;
         $this->userinfo;
+        $this->table;
         $this->connection = new mysqli($host, $username, $password, $db);
     }
 
@@ -75,9 +77,17 @@ class Ipdo
     public function getTables()
     {
         $result = mysqli_query($this->connection, 'SHOW TABLES');
-        $table = mysqli_fetch_all($result);
-        return  $table;
+        $this->table = mysqli_fetch_all($result);
+        return  $this->table;
 
+    }
+
+    public function getFields($table)
+    {
+        $result = mysqli_query($this->connection,"SHOW COLUMNS FROM $table");
+        $fields = mysqli_fetch_all($result);
+
+        return  $fields;
     }
 
 }
@@ -87,6 +97,9 @@ class Ipdo
 
 $mysqli = new Ipdo();
 
+echo'<pre>';
+var_dump($mysqli->connect("localhost", "root", "", "moduleconnexion"));
+echo'</pre>';
 echo'<pre>';
 var_dump($mysqli->execute("SELECT * FROM utilisateurs"));
 echo'</pre>';
@@ -101,6 +114,10 @@ echo'</pre>';
 
 echo'<pre>';
 var_dump($mysqli->getTables());
+echo'</pre>';
+
+echo'<pre>';
+var_dump($mysqli->getFields("utilisateurs"));
 echo'</pre>';
 
 //("SELECT * FROM utilisateurs")
