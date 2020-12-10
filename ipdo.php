@@ -8,6 +8,7 @@ class Ipdo
     private $connection;
     private $db;
     private $query;
+    private $userinfo;
 
     public function __construct($host = "localhost", $username = "root", $password = "", $db = "moduleconnexion"){
 
@@ -16,10 +17,11 @@ class Ipdo
         $this->password = $password;
         $this->db= $db;
         $this->query;
+        $this->userinfo;
         $this->connection = new mysqli($host, $username, $password, $db);
     }
 
- public function connect($host, $username, $password, $db)
+    public function connect($host, $username, $password, $db)
     {
         if($this->connection)
         {
@@ -42,8 +44,8 @@ class Ipdo
     {
         $this->query = $query;
         $result = mysqli_query($this->connection,$query);
-        $userinfo = mysqli_fetch_assoc($result);
-        return  $userinfo;
+        $this->userinfo = mysqli_fetch_all($result);
+        return  $this->userinfo;
     }
     public function getLastQuery()
     {
@@ -60,7 +62,19 @@ class Ipdo
 
     public function getLastResult()
     {
+        if($this->userinfo)
+        {
+            return $this->userinfo;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
+    public function getTables()
+    {
+        return $this->userinfo->showtables();
     }
 
 }
@@ -79,7 +93,11 @@ var_dump($mysqli->getLastQuery());
 echo'</pre>';
 
 echo'<pre>';
-var_dump($mysqli->getLastQuery());
+var_dump($mysqli->getLastResult());
+echo'</pre>';
+
+echo'<pre>';
+var_dump($mysqli->getTables());
 echo'</pre>';
 
 //("SELECT * FROM utilisateurs")
