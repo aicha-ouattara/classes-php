@@ -23,7 +23,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ipdo.php" beforeDir="false" afterPath="$PROJECT_DIR$/ipdo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/text.php" beforeDir="false" afterPath="$PROJECT_DIR$/text.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-pdo.php" beforeDir="false" afterPath="$PROJECT_DIR$/user-pdo.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +66,7 @@
       <option name="presentableId" value="Default" />
       <updated>1607330722435</updated>
       <workItem from="1607330723555" duration="8651000" />
-      <workItem from="1607340203412" duration="53842000" />
+      <workItem from="1607340203412" duration="66072000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1607348770236</created>
@@ -99,6 +98,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="354" y="135" key="#Inspections" timestamp="1607528143356">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="354" y="135" key="#Inspections/0.0.1440.900@0.0.1440.900" timestamp="1607528143356" />
     <state x="400" y="8" key="#PHP" timestamp="1607520619728">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

@@ -2,37 +2,20 @@
 
 class Ipdo
 {
-    private $connection;
+    private $host;
+    private $username;
+    private $password;
+    private $db;
 
-    public function __construct( $host = "localhost", $dbname = "classes", $username = "root", $password    = ""){
-
-            $this->connection = mysqli_connect($host, $username, $password, $dbname);
-
-        }
-
-    public function connect($host, $username, $password, $dbname)
+    public function constructeur()
     {
-        if(isset($this->connection))
-        {
-            $this->close();
-        }
-        $this->connection = mysqli_connect($host, $username, $password, $dbname);
-    }
+        $this->host = "localhost";
+        $this->username = "root";
+        $this->password = "";
+        $this->db= "classes";
 
-    public function close()
-    {
-        mysqli_close($this->connection);
-    }
-
-    public function __destruct()
-    {
-        $this->connection = NULL;
-        return true;
-    }
-
-    public function execute($query)
-    {
-
+        $conn = new mysqli($this->host ,$this->username,  $this->password, $this->db);
+        return $conn;
     }
 }
 
@@ -42,6 +25,6 @@ class Ipdo
 $mysqli = new Ipdo();
 
 echo'<pre>';
-var_dump($mysqli);
+var_dump($mysqli->constructeur());
 echo'</pre>';
 

@@ -5,59 +5,56 @@ class Ipdo
     private $host;
     private $username;
     private $password;
+    private $connection;
     private $db;
-    private $connect;
+    private $query;
 
-    public function __construct($host = "localhost", $username = "root", $password = "", $db = "classes"){
+    public function __construct($host = "localhost", $username = "root", $password = "", $db = "moduleconnexion"){
 
         $this->host = $host;
         $this->username = $username;
         $this->password = $password;
         $this->db= $db;
-        $this->connect = new mysqli($this->host, $this->username,$this->password ,$this->db);
-        return  $this->connect;
-
+        $this->query;
+        $this->connection = new mysqli($host, $username, $password, $db);
     }
 
-
-
- public function connect($host, $username, $password, $dbname)
+ public function connect($host, $username, $password, $db)
     {
-        if(isset ($this->connect))
+        if($this->connection)
         {
-            $this->__destruct();
+            $this->close();
         }
-          return $this->connect;
+       return $this->connection = new mysqli($host, $username, $password, $db);
     }
 
     public function close()
     {
-       $this->connect->close();
+       return $this->connection->close();
     }
 
     public function __destruct()
     {
-        $this->db = null;
-        return true;
+        return $this->db = null;
     }
 
-   /* public function execute($query)
+   public function execute($query)
     {
-        $req = $this->connection->prepare($query);
-        $req->execute();
-        return $req;
+        $this->query = $query;
+        $result = mysqli_query($this->connection,$query);
+        $userinfo = mysqli_fetch_assoc($result);
+        return  $userinfo;
     }
     public function getLastQuery()
     {
-        if ($this->execute($this->query))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }*/
+       
+
+    }
+
+    public function getLastResult()
+    {
+
+    }
 
 }
 
@@ -67,7 +64,7 @@ class Ipdo
 $mysqli = new Ipdo();
 
 echo'<pre>';
-var_dump($mysqli);
+var_dump($mysqli->execute("SELECT * FROM utilisateurs"));
 echo'</pre>';
 
 
