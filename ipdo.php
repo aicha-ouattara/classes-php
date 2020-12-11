@@ -21,6 +21,7 @@ class Ipdo
         $this->userinfo;
         $this->table;
         $this->connection = new mysqli($host, $username, $password, $db);
+        return $this->connection;
     }
 
     public function connect($host, $username, $password, $db)
@@ -102,7 +103,9 @@ class Ipdo
 
 
 $mysqli = new Ipdo();
-
+echo'<pre>';
+var_dump($mysqli->constructeur("localhost", "root", "", "moduleconnexion"));
+echo'</pre>';
 echo'<pre>';
 var_dump($mysqli->connect("localhost", "root", "", "moduleconnexion"));
 echo'</pre>';
