@@ -28,7 +28,6 @@ class User
                 return $result;
         }
 
-
     }
 
     public function connect($login, $password)

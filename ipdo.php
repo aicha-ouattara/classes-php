@@ -52,27 +52,33 @@ class Ipdo
     }
     public function getLastQuery()
     {
-       if($this->query)
-       {
-           return $this->query;
-       }
-       else
-       {
-           return false;
-       }
+      if(isset($this->connection))
+      {
+          if($this->query)
+          {
+              return $this->query;
+          }
+          else
+          {
+              return false;
+          }
+      }
 
     }
 
     public function getLastResult()
     {
-        if($this->userinfo)
-        {
-            return $this->userinfo;
-        }
-        else
-        {
-            return false;
-        }
+       if(isset($this->connection))
+       {
+           if($this->userinfo)
+           {
+               return $this->userinfo;
+           }
+           else
+           {
+               return false;
+           }
+       }
     }
 
     public function getTables()
@@ -101,7 +107,7 @@ class Ipdo
 
 
 
-/*
+
 $mysqli = new Ipdo();
 echo'<pre>';
 var_dump($mysqli->constructeur("localhost", "root", "", "moduleconnexion"));
@@ -127,7 +133,7 @@ echo'</pre>';
 
 echo'<pre>';
 var_dump($mysqli->getFields("utilisateurs"));
-echo'</pre>';*/
+echo'</pre>';
 
 //("SELECT * FROM utilisateurs")
 
