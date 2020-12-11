@@ -74,22 +74,26 @@ class User
 
    public function delete()
     {
-        $bdd = mysqli_connect("localhost", "root", "", "classes"); // Connexion database...
-        $sql = "DELETE FROM utilisateurs WHERE id = '".$this->id."'";
-        if ($result = mysqli_query($bdd,$sql))
-        {
-            $this->id = null;
-            $this->login = null;
-            $this->password = null;
-            $this->email = null;
-            $this->firstname = null;
-            $this->lastname = null;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+       if(isset($this->id))
+       {
+           $bdd = mysqli_connect("localhost", "root", "", "classes"); // Connexion database...
+           $sql = "DELETE FROM utilisateurs WHERE id = '".$this->id."'";
+           if ($result = mysqli_query($bdd,$sql))
+           {
+               $this->id = null;
+               $this->login = null;
+               $this->password = null;
+               $this->email = null;
+               $this->firstname = null;
+               $this->lastname = null;
+               return true;
+           }
+           else
+           {
+               return false;
+           }
+       }
+
     }
 
     public function update($login, $password, $email, $firstname, $lastname)

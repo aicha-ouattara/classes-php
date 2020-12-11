@@ -72,23 +72,26 @@ class User
 
     public function delete()
     {
-        $bdd=new PDO("mysql:host=localhost;dbname=classes","root","");
-        $req = $bdd->prepare("DELETE FROM utilisateurs WHERE id = ?");
-        $req->execute(array($this->id));
-        if ($req->execute(array($this->id)))
-        {
-            $this->id = null;
-            $this->login = null;
-            $this->password = null;
-            $this->email = null;
-            $this->firstname = null;
-            $this->lastname = null;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+       if(isset($this->id))
+       {
+           $bdd=new PDO("mysql:host=localhost;dbname=classes","root","");
+           $req = $bdd->prepare("DELETE FROM utilisateurs WHERE id = ?");
+           $req->execute(array($this->id));
+           if ($req->execute(array($this->id)))
+           {
+               $this->id = null;
+               $this->login = null;
+               $this->password = null;
+               $this->email = null;
+               $this->firstname = null;
+               $this->lastname = null;
+               return true;
+           }
+           else
+           {
+               return false;
+           }
+       }
     }
 
     public function update($login, $password, $email, $firstname, $lastname)
@@ -175,6 +178,10 @@ class User
 $aicha= new User();
 $aicha->register('chay', 1234,'aichadesign@gmail.com', 'Flore', 'Ouattara');
 $aicha->connect('chay', 1234);
+
+echo'<pre>';
+var_dump($aicha->delete());
+echo '</pre>';
 
 //var_dump($aicha->register('chayali', 1234,'aichadesign@gmail.com', 'Flore', 'Ouattara'));
 
