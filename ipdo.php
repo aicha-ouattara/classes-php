@@ -101,7 +101,7 @@ class Ipdo
 
 
 
-
+/*
 $mysqli = new Ipdo();
 echo'<pre>';
 var_dump($mysqli->constructeur("localhost", "root", "", "moduleconnexion"));
@@ -127,7 +127,7 @@ echo'</pre>';
 
 echo'<pre>';
 var_dump($mysqli->getFields("utilisateurs"));
-echo'</pre>';
+echo'</pre>';*/
 
 //("SELECT * FROM utilisateurs")
 
