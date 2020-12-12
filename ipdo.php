@@ -116,7 +116,7 @@ echo'<pre>';
 var_dump($mysqli->connect("localhost", "root", "", "moduleconnexion"));
 echo'</pre>';
 echo'<pre>';
-var_dump($mysqli->execute("SELECT * FROM utilisateurs"));
+var_dump($mysqli->execute('select id from utilisateurs'));
 echo'</pre>';
 
 echo'<pre>';
