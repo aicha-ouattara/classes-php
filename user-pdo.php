@@ -149,8 +149,7 @@ class User
 
     public function refresh()
     {
-        if(isset($this->id))
-        {
+
             $bdd=new PDO("mysql:host=localhost;dbname=classes","root","");
             $req = $bdd->prepare("SELECT * FROM utilisateurs WHERE id = ?");
             $req->execute(array($this->id));
@@ -169,7 +168,6 @@ class User
             {
                 return false;
             }
-        }
 
     }
 

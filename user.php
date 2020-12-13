@@ -149,8 +149,7 @@ class User
 
     public function refresh()
     {
-       if(isset($this->id))
-       {
+
            $bdd = mysqli_connect("localhost", "root", "", "classes"); // Connexion database...
            $sql = "SELECT * FROM utilisateurs WHERE id = '".$this->id."'";
            $result = mysqli_query($bdd,$sql) or die(mysqli_error($bdd));
@@ -169,7 +168,7 @@ class User
            {
                return false;
            }
-       }
+
     }
 
 }
