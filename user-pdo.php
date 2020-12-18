@@ -44,7 +44,7 @@ class User
             $this->email = $users["email"];
             $this->firstname = $users["firstname"];
             $this->lastname = $users["lastname"];
-            return true;
+            return  $users;
         }
         else
         {
